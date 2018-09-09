@@ -96,7 +96,7 @@ if SERVER then
     net.WriteBool(victim.csshud_headshot or false);
 
     -- Attacker data
-    if (attacker != victim) then
+    if (IsValid(attacker) and attacker:GetClass() != nil and attacker != victim) then
       if (attacker:IsPlayer()) then
         net.WriteString(attacker:Name());
         net.WriteColor(team.GetColor(attacker:Team()));
