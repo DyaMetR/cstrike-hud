@@ -83,8 +83,9 @@ if SERVER then
     Sends a death notice to everyone
     @param {}
   ]]
-  local function SendDeathNotice(victim, attacker)
+  local function SendDeathNotice(victim, inflictor, attacker)
     net.Start(NET_STRING);
+
     -- Victim data
     if (victim:IsPlayer()) then
       net.WriteString(victim:Name());
@@ -97,19 +98,29 @@ if SERVER then
 
     -- Attacker data
     if (IsValid(attacker) and attacker:GetClass() != nil and attacker != victim) then
-      if (attacker:IsPlayer()) then
-        net.WriteString(attacker:Name());
-        net.WriteColor(team.GetColor(attacker:Team()));
-        if (IsValid(attacker:GetActiveWeapon())) then
+      if (attacker:IsPlayer() or attacker:IsNPC()) then
+        -- Name
+        if (attacker:IsPlayer()) then
+          net.WriteString(attacker:Name());
+          net.WriteColor(team.GetColor(attacker:Team()));
+        else
+          net.WriteString(attacker:GetClass());
+          net.WriteColor(Color(255, 0, 0));
+        end
+
+        -- Weapon
+        if (inflictor == attacker and IsValid(attacker:GetActiveWeapon())) then
           net.WriteString(attacker:GetActiveWeapon():GetClass());
         else
-          net.WriteString("");
+          net.WriteString(inflictor:GetClass());
         end
       else
-        net.WriteString(attacker:GetClass());
+        net.WriteString(inflictor:GetClass());
         net.WriteColor(Color(255, 0, 0));
       end
     else
+      net.WriteString("");
+      net.WriteColor(Color(255, 0, 0));
       net.WriteString("");
     end
 
@@ -128,11 +139,11 @@ if SERVER then
 
   -- Send death notice
   hook.Add("PlayerDeath", "csshud_death", function(player, infl, attacker)
-    SendDeathNotice(player, attacker);
+    SendDeathNotice(player, infl, attacker);
   end);
 
   hook.Add("OnNPCKilled", "csshud_death_npc", function(npc, attacker, infl)
-    SendDeathNotice(npc, attacker);
+    SendDeathNotice(npc, infl, attacker);
   end);
 
   -- Reset buffer data

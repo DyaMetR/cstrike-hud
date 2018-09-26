@@ -1,8 +1,8 @@
 --[[
   Counter-Strike: Source
      Heads Up Display
-      Version 1.0.1
-        09/09/18
+      Version 1.0.2
+        26/09/18
 By DyaMetR
 ]]
 
