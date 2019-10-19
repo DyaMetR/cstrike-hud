@@ -15,7 +15,7 @@ if CLIENT then
     local x1, x2 = ScrW() * 0.8798, ScrW() * 0.8597;
     local y1, y2 = ScrH() * 0.034, ScrH() * 0.06;
     local background = Color(0, 0, 0, 200);
-    local COLOR = CSSHUD:GetDefaultColor();
+    local COLOR = CSSHUD:GetDeathOverlayColor();
 
     -- Draw bars
     draw.RoundedBox(0, 0, 0, ScrW() , h, background);

@@ -1,13 +1,16 @@
 --[[
   Counter-Strike: Source
      Heads Up Display
-      Version 1.0.2
-        26/09/18
+      Version 1.0.3
+        19/10/19
 By DyaMetR
 ]]
 
 -- Main framework table
 CSSHUD = {};
+
+-- Version number
+CSSHUD.Version = "1.0.3";
 
 --[[
   METHODS
