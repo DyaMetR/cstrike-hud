@@ -96,6 +96,10 @@ if SERVER then
     end
     net.WriteBool(victim.csshud_headshot or false);
 
+    -- Inflictor class
+    local inflClass = "";
+    if (IsValid(inflictor)) then inflClass = inflictor:GetClass(); end
+
     -- Attacker data
     if (IsValid(attacker) and attacker:GetClass() != nil and attacker != victim) then
       if (attacker:IsPlayer() or attacker:IsNPC()) then
@@ -112,10 +116,10 @@ if SERVER then
         if (inflictor == attacker and IsValid(attacker:GetActiveWeapon())) then
           net.WriteString(attacker:GetActiveWeapon():GetClass());
         else
-          net.WriteString(inflictor:GetClass());
+          net.WriteString(inflClass);
         end
       else
-        net.WriteString(inflictor:GetClass());
+        net.WriteString(inflClass);
         net.WriteColor(Color(255, 0, 0));
       end
     else

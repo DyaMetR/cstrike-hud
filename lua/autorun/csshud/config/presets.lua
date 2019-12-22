@@ -66,6 +66,20 @@ if CLIENT then
   end
 
   --[[
+    Removes the given preset
+    @param {string} name
+    @void
+  ]]
+  function CSSHUD:RemovePreset(name)
+    if (self.Presets[name] == nil) then print("Error: Attempted to remove an unexisting preset."); return; end
+    self.Presets[name] = nil;
+    print("Deleting '" .. name .. ".txt' ...");
+    file.Delete(DIR .. name .. ".txt");
+    print("Done.");
+    LocalPlayer():ChatPrint("Preset '" .. name .. "' removed successfully!");
+  end
+
+  --[[
     Returns all of the presets
     @return {table} presets
   ]]
@@ -80,6 +94,20 @@ if CLIENT then
 
   concommand.Add("csshud_preset_save", function(player, com, args)
     CSSHUD:SavePreset(args[1]);
+    CSSHUD.ReloadPreset = true;
+  end);
+
+  concommand.Add("csshud_preset_remove", function(player, com, args)
+    local preset = CSSHUD:GetSelectedPreset();
+    Derma_Query(
+      "Are you sure you want to remove " .. preset .. "?",
+      "Remove preset",
+      "Yes",
+      function()
+        CSSHUD:RemovePreset(preset);
+        CSSHUD.ReloadPreset = true;
+      end,
+      "No");
   end);
 
 end

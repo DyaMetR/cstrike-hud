@@ -39,7 +39,7 @@ if CLIENT then
     @return {table} ammoData
   ]]
   function CSSHUD:GetDefaultAmmoIcon()
-    return {font = "csshud_ammo", letter = "R", x = 1};
+    return {font = "csshud_ammo_hl2", letter = "p", x = 1};
   end
 
   --[[

@@ -8,6 +8,8 @@ if CLIENT then
   --[[
     Menu options
   ]]
+  CSSHUD.ReloadPreset = true;
+  local combobox, label;
   local function menuComposition( panel )
   	panel:ClearControls();
 
@@ -28,10 +30,7 @@ if CLIENT then
 
     -- Presets
     panel:AddControl( "Label" , { Text = "\nPresets"} );
-    local combobox, label = panel:ComboBox("Load preset", "csshud_preset_load");
-    for preset, _ in pairs(CSSHUD:GetPresets()) do
-  		combobox:AddChoice(preset);
-    end
+    local combobox1, label1 = panel:ComboBox("Load preset", "csshud_preset_load");
 
     panel:AddControl( "TextBox", {
       Label = "Force load preset",
@@ -42,6 +41,19 @@ if CLIENT then
       Label = "Save preset",
       Command = "csshud_preset_save"
     });
+
+    combobox, label = panel:ComboBox("Remove preset", "csshud_preset_remove");
+    combobox.Think = function()
+      if (CSSHUD.ReloadPreset) then
+        combobox:Clear();
+        combobox1:Clear();
+        for preset, _ in pairs(CSSHUD:GetPresets()) do
+      		combobox:AddChoice(preset);
+          combobox1:AddChoice(preset);
+        end
+        CSSHUD.ReloadPreset = false;
+      end
+    end
 
     -- General colouring
     panel:AddControl( "Label" , { Text = "\nGeneral colouring"} );
@@ -280,5 +292,13 @@ if CLIENT then
   	spawnmenu.AddToolMenuOption( "Options", "DyaMetR", "CSSHUD", "Counter-Strike: Source HUD", "", "", menuComposition );
   end
 hook.Add( "PopulateToolMenu", "csshud_menu", menuCreation );
+
+  --[[
+    Gets the current selected preset from the combobox
+    @return {string} preset
+  ]]
+  function CSSHUD:GetSelectedPreset()
+    return combobox:GetSelected();
+  end
 
 end
