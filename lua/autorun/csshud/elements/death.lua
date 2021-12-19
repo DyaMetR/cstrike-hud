@@ -11,7 +11,7 @@ if CLIENT then
   function CSSHUD:DeathPanel()
     if (not CSSHUD:IsDeathOverlayEnabled()) then return end;
     if (LocalPlayer():Alive()) then return end;
-    local h = ScrH() * 0.107;
+    local h = math.ceil(ScrH() * 0.107);
     local x1, x2 = ScrW() * 0.8798, ScrW() * 0.8597;
     local y1, y2 = ScrH() * 0.034, ScrH() * 0.06;
     local background = Color(0, 0, 0, 200);

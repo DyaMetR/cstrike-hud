@@ -45,7 +45,7 @@ if CLIENT then
     ["csshud_time_variant"] = 1,
     ["csshud_time_input"] = "0:00",
     ["csshud_money_variant"] = 1,
-    ["csshud_money_input"] = "800",
+    ["csshud_money_input"] = 800,
     ["csshud_money_multiplier"] = 300,
     ["csshud_money_max"] = 16000,
     ["csshud_color_background_a"] = CSSHUD:GetDefaultBackgroundColor().a
@@ -314,7 +314,7 @@ if CLIENT then
     @return {string} input
   ]]
   function CSSHUD:GetMoneyInput()
-    return self.Configuration.Values["csshud_money_input"]:GetString();
+    return self.Configuration.Values["csshud_money_input"]:GetInt();
   end
 
   --[[

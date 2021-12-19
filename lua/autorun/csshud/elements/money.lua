@@ -50,22 +50,22 @@ if CLIENT then
     @void
   ]]
   function CSSHUD:DrawMoney(x, y, value)
-      local COLOR = self:GetMoneyColor();
-      local DIFF = getDifferenceColor();
-      local color = Color((COLOR.r * (1-amount)) + (DIFF.r * amount), (COLOR.g * (1-amount)) + (DIFF.g * amount), (COLOR.b * (1-amount)), COLOR.a);
-      x = x - self:GetWidth();
-      y = y - self:GetHeight();
-      -- Money indicator
-      draw.SimpleText("$", "csshud", x - self:GetWidth() * 0.225, y + self:GetHeight() * 0.1, color, 0, 1);
-      draw.SimpleText(value, "csshud", x + self:GetWidth() * self.NUMBER_X, y + self:GetHeight() * self.Y_OFFSET * 0.326, color, 2, 1);
+    local COLOR = self:GetMoneyColor();
+    local DIFF = getDifferenceColor();
+    local color = Color((COLOR.r * (1-amount)) + (DIFF.r * amount), (COLOR.g * (1-amount)) + (DIFF.g * amount), (COLOR.b * (1-amount)), COLOR.a);
+    x = x - self:GetWidth();
+    y = y - self:GetHeight();
+    -- Money indicator
+    draw.SimpleText("$", "csshud", x - self:GetWidth() * 0.225, y + self:GetHeight() * 0.1, color, 0, 1);
+    draw.SimpleText(value, "csshud", x + self:GetWidth() * self.NUMBER_X, y + self:GetHeight() * self.Y_OFFSET * 0.326, color, 2, 1);
 
-      -- Difference indicator
-      local sign = "+";
-      if (showLast < 0) then sign = "-" end;
-      draw.SimpleText(sign, "csshud", x - self:GetWidth() * 0.225, y + (self:GetHeight() * 0.1) - (self:GetHeight() * 0.8), DIFF, 0, 1);
-      draw.SimpleText(math.abs(showLast), "csshud", x + self:GetWidth() * self.NUMBER_X, y + (self:GetHeight() * self.Y_OFFSET * 0.326) - (self:GetHeight() * 0.8), DIFF, 2, 1);
+    -- Difference indicator
+    local sign = "+";
+    if (showLast < 0) then sign = "-" end;
+    draw.SimpleText(sign, "csshud", x - self:GetWidth() * 0.225, y + (self:GetHeight() * 0.1) - (self:GetHeight() * 0.8), DIFF, 0, 1);
+    draw.SimpleText(math.abs(showLast), "csshud", x + self:GetWidth() * self.NUMBER_X, y + (self:GetHeight() * self.Y_OFFSET * 0.326) - (self:GetHeight() * 0.8), DIFF, 2, 1);
 
-      doAnimation(value);
+    doAnimation(value);
   end
 
   --[[

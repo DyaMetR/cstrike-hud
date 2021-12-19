@@ -186,7 +186,7 @@ if CLIENT then
   	);
 
     panel:AddControl( "TextBox", {
-  		Label = "Maximum money amount",
+  		Label = "Maximum money",
   		Command = "csshud_money_max",
   		}
   	);
@@ -197,7 +197,7 @@ if CLIENT then
     end
 
     panel:AddControl( "TextBox", {
-  		Label = "Money value multiplier",
+  		Label = "Money multiplier",
   		Command = "csshud_money_multiplier",
   		}
   	);

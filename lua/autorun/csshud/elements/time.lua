@@ -29,7 +29,7 @@ if CLIENT then
     local x, y = CSSHUD:GetDefaultScreenOffset();
     local value = CSSHUD:GetOverride("time") or CSSHUD:GetTime();
 
-    CSSHUD:DrawTime((ScrW()/2) - (CSSHUD:GetWidth()/2) * (TIME_WIDTH/2), ScrH() - y, value, w);
+    CSSHUD:DrawTime((ScrW()/2) - (CSSHUD:GetWidth()/2) * (TIME_WIDTH/2), ScrH() - y, value);
   end
 
 end

@@ -1,8 +1,8 @@
 --[[
   Counter-Strike: Source
      Heads Up Display
-      Version 1.1.0
-        22/12/19
+      Version 1.1.1
+        19/12/21
 By DyaMetR
 ]]
 
@@ -10,7 +10,7 @@ By DyaMetR
 CSSHUD = {};
 
 -- Version number
-CSSHUD.Version = "1.1.0";
+CSSHUD.Version = "1.1.1";
 
 --[[
   METHODS
