@@ -23,7 +23,7 @@ First of all it's _highly recommended_ to use the built-in **add-ons** folder th
 
 To do this, you've got to put your custom scripts in the folder:
 
-`lua/autorun/cofhud/add-ons`
+`lua/autorun/csshud/add-ons`
 
 Inside your own addon folder, or just directly into the garrysmod folder, but it's recommended to separate your scripts in addons.
 

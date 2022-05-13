@@ -1,0 +1,14 @@
+{
+	"title"	:	"Counter-Strike: Source HUD",
+	"type"	:	"effects",
+	"tags"	:	[ "fun", "movie" ],
+	"ignore"	:
+	[
+		"*.psd",
+		"*.vcproj",
+		"*.svn*",
+		"*.git*",
+		"LICENSE",
+		"README.md"
+	]
+}
